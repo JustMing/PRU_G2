@@ -5,7 +5,6 @@ public class PlayerRotate : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 mousePos;
     [SerializeField] private Camera cam;
-    [SerializeField] private float offSet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,7 +20,7 @@ public class PlayerRotate : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 lookDir = mousePos - rb.position;
-        float rotateAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - offSet;
+        float rotateAngle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
         rb.rotation = rotateAngle;
     }
 }
