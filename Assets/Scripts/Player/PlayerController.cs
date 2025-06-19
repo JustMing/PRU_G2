@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
         playerDirection = new Vector2 (directionX, directionY).normalized;
         animator.SetFloat("MoveX", directionX);
         animator.SetFloat("MoveY", directionY);
-        //_velocity = HandleHorizontal(Input.GetAxis("Horizontal"));
-        //_velocity += HandleVertical(Input.GetAxis("Vertical"));
-        //MoveShip();
     }
 
     private void FixedUpdate()
@@ -32,21 +29,5 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = new Vector2(playerDirection.x * moveSpeed,
             playerDirection.y * moveSpeed);
     }
-
-    //private Vector2 HandleHorizontal(float x)
-    //{
-    //    return new Vector2(Mathf.Clamp(x, -1, 1), 0);
-    //}
-
-    //private Vector2 HandleVertical(float y)
-    //{
-    //    return new Vector2(0,Mathf.Clamp(y, -1, 1));
-    //}
-
-    //private void MoveShip()
-    //{
-    //    float newX = transform.position.x + (_velocity.x * speed * Time.deltaTime);
-    //    float newY = transform.position.y + (_velocity.y * speed * Time.deltaTime);
-    //    transform.position = new Vector2(newX,newY);
-    //}
+    
 }
