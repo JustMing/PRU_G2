@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]private AudioMixer audioMixer;
-    [SerializeField]private GameObject pauseMenuPrefab;
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private GameObject pauseMenuPrefab;
     private GameObject pauseMenuInstance;
     public static bool IsPause = false;
     public static GameManager Instance;
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != ("MainMenu"))
         {
-            if(IsPause)
+            if (IsPause)
             {
                 GameResume();
             }
@@ -38,11 +38,7 @@ public class GameManager : MonoBehaviour
             {
                 GamePause();
             }
-    }
-}
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Gameplay");
+        }
     }
 
     public void QuitGame()
