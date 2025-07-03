@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private GameObject pauseMenuInstance;
     public static bool IsPause = false;
     public static GameManager Instance;
+    public float worldSpeed;
 
     private void Awake()
     {
