@@ -13,7 +13,7 @@ public class ObjectSpawner : MonoBehaviour
     [System.Serializable]
     public class Wave
     {
-        public GameObject prefab;
+        public ObjectPooler pool;
         public float spawnTimer;
         public float spawnInterval;
         public int objectsPerwave;
@@ -22,7 +22,7 @@ public class ObjectSpawner : MonoBehaviour
 
     void Update()
     {
-        waves[waveNumber].spawnTimer += Time.deltaTime;
+        waves[waveNumber].spawnTimer += Time.deltaTime * GameManager.Instance.worldSpeed;
         if (waves[waveNumber].spawnTimer >= waves[waveNumber].spawnInterval)
         {
             waves[waveNumber].spawnTimer = 0;
@@ -41,7 +41,11 @@ public class ObjectSpawner : MonoBehaviour
 
     private void SpawnObject()
     {
-        Instantiate(waves[waveNumber].prefab,RandomSpawnPoint(),transform.rotation);// create a copy of object what, where and rotation
+        GameObject spawnedObject = waves[waveNumber].pool.GetPooledObject();
+        spawnedObject.transform.position = RandomSpawnPoint();
+        spawnedObject.transform.rotation = transform.rotation;
+        spawnedObject.SetActive(true);
+        //Instantiate(waves[waveNumber].prefab,RandomSpawnPoint(),transform.rotation,transform);// create a copy of object what, where and rotation
         waves[waveNumber].spawnedObjectCount++;
     }
 

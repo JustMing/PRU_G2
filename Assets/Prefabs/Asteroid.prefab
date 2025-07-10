@@ -10,12 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4040627032846190}
   - component: {fileID: 1649002178921017831}
+  - component: {fileID: -2369381043611377797}
+  - component: {fileID: 8270297586180797862}
   - component: {fileID: 5099566496547456540}
   - component: {fileID: 4189430513410488304}
   - component: {fileID: 1679821500351236370}
   m_Layer: 8
   m_Name: Asteroid
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +54,31 @@ MonoBehaviour:
   - {fileID: 473681435, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
   - {fileID: -2668201035383378144, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
   - {fileID: 3933743010824487973, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
+--- !u!114 &-2369381043611377797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976493281903465446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dcf7ab08078064883d1a3307c428f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+--- !u!114 &8270297586180797862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2976493281903465446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c6b039ea3e602449a20be2e935c433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &5099566496547456540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -94,7 +121,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -706640145
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8149009158662877648, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -133,7 +160,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!58 &1679821500351236370
 CircleCollider2D:
   m_ObjectHideFlags: 0

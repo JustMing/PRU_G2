@@ -81,4 +81,9 @@ public class GameManager : MonoBehaviour
             pauseMenuInstance.SetActive(false);
         }
     }
+
+    public void SetWorldSpeed(float speed)
+    {
+        worldSpeed = speed;
+    }
 }

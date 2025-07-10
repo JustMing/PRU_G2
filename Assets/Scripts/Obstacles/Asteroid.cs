@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Asteroid : MonoBehaviour
@@ -5,25 +6,71 @@ public class Asteroid : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite[] sprites;
     private Rigidbody2D rb;
+    private FlashWhite flashWhite;
+
+    private ObjectPooler destroyEffectPool;
+    private int maxLives =3;
+    private int lives;
+    private int damage = 1;
+    private int givenExp = 1;
+
+    float pushX;
+    float pushY;
+
+    private void OnEnable()
+    {
+        lives = maxLives;
+        transform.rotation = Quaternion.identity;
+        pushX = Random.Range(-1f, 1f);
+        pushY = Random.Range(-1f, 0);
+       if(rb) rb.linearVelocity = new Vector2(pushX, pushY);
+    }
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
+        flashWhite = GetComponent<FlashWhite>();
+        destroyEffectPool = GameObject.Find("boom2Pool").GetComponent<ObjectPooler>();
+
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-        float pushX = Random.Range(-1f, 1f);
-        float pushY = Random.Range(-1f, 0);
-        rb.linearVelocity = new Vector2(pushX, pushY);
+         pushX = Random.Range(-1f, 1f);
+         pushY = Random.Range(-1f, 0);
+        if(rb) rb.linearVelocity = new Vector2(pushX, pushY);
+        float randomScale = Random.Range(1f, 2f);
+        transform.localScale = new Vector2(randomScale, randomScale);
+
+        lives = maxLives;
     }
 
-    
-    void Update()
+   
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        float moveY = GameManager.Instance.worldSpeed * Time.deltaTime;
-        transform.position += new Vector3(0, -moveY);
-        if(transform.position.y < -13)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player) player.TakeDamage(damage);
         }
     }
+
+    public void TakeDamage(int damage, bool giveExp)
+    {
+        lives -= damage;
+        if (lives > 0) 
+        { 
+            flashWhite.Flash(); 
+        }
+       else
+        {
+            GameObject destroyEffect = destroyEffectPool.GetPooledObject();
+            destroyEffect.transform.position = transform.position;
+            destroyEffect.transform.rotation = transform.rotation;
+            destroyEffect.SetActive(true);
+            //Instantiate(destroyEffect, transform.position, transform.rotation);
+            flashWhite.Reset();
+            gameObject.SetActive(false);
+            if(giveExp) PlayerController.Instance.GetExperience(givenExp);
+        }
+    }
+
 }

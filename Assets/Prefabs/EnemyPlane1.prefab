@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 4628283567861810342}
   - component: {fileID: 7660651360362895443}
   - component: {fileID: 3822957808478110800}
+  - component: {fileID: -5923523477827952858}
   - component: {fileID: 5797399305509147844}
   - component: {fileID: 5461188304957505899}
   m_Layer: 8
   m_Name: EnemyPlane1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -102,6 +103,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee5883ffd0583c2429ee714241e29b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5923523477827952858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2282609110396460925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33dcf7ab08078064883d1a3307c428f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
 --- !u!50 &5797399305509147844
 Rigidbody2D:
   serializedVersion: 5

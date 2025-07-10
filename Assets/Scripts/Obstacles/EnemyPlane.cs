@@ -8,13 +8,4 @@ public class EnemyPlane : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        float moveY = GameManager.Instance.worldSpeed * Time.deltaTime;
-        transform.position += new Vector3(0, -moveY);
-        if (transform.position.y < -13)
-        {
-            Destroy(gameObject);
-        }
-    }
 }
