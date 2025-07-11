@@ -8,10 +8,11 @@ public class Enemy : MonoBehaviour
     private FlashWhite flashWhite;
     protected ObjectPooler destroyEffectPool;
 
-    [SerializeField] private int lives;
+    private int lives;
     [SerializeField] private int maxLives;
     [SerializeField] private int damage;
     [SerializeField] private int givenExp;
+    [SerializeField] private int givenPoint;
 
     protected float speedX = 0;
     protected float speedY = 0;
@@ -72,6 +73,7 @@ public class Enemy : MonoBehaviour
             destroyEffect.SetActive(true);
 
             PlayerController.Instance.GetExperience(givenExp);
+            PlayerController.Instance.GetScorePoint(givenPoint);
 
             gameObject.SetActive(false); 
         }
@@ -79,8 +81,6 @@ public class Enemy : MonoBehaviour
 
     public void EnemyShoot()
     {
-        //GameObject.Find("Critter1_ZappedPool").
-        //    GetComponent<ObjectPooler>();
         GameObject bullet = bulletPool.GetPooledObject();
         float xPos = bulletPosition.transform.position.x;
         bullet.transform.position = new Vector2(xPos, bulletPosition.transform.position.y);

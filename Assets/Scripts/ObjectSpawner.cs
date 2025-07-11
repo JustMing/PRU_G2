@@ -9,6 +9,7 @@ public class ObjectSpawner : MonoBehaviour
 
     [SerializeField] private int waveNumber;
     [SerializeField] private List<Wave> waves;
+    [SerializeField] private float timeCounter;
 
     [System.Serializable]
     public class Wave
@@ -37,6 +38,19 @@ public class ObjectSpawner : MonoBehaviour
                 waveNumber = 0;
             }
         }
+
+        timeCounter += Time.deltaTime;
+        if (timeCounter >= 10f)
+        {
+            timeCounter = 0f;
+            foreach (Wave wave in waves)
+            {
+                if (wave.spawnInterval > 1f)
+                {
+                    wave.spawnInterval = Mathf.Max(wave.spawnInterval - 1f, 1);
+                }
+            }
+        }
     }
 
     private void SpawnObject()
@@ -59,4 +73,13 @@ public class ObjectSpawner : MonoBehaviour
 
         return spawnPoint;
     }
+
+    //private void IncreaseSpawnRate()
+    //{
+    //    if(waves[waveNumber].spawnInterval > 0.5f)
+    //    {
+    //        waves[waveNumber].spawnInterval -= 0.5f;
+    //    }
+    //    if()
+    //}
 }

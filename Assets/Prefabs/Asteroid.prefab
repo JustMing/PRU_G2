@@ -54,6 +54,11 @@ MonoBehaviour:
   - {fileID: 473681435, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
   - {fileID: -2668201035383378144, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
   - {fileID: 3933743010824487973, guid: 1e920caaab1dfaa41a3d3337ce8faf6a, type: 3}
+  destroyEffectPool: {fileID: 0}
+  maxLives: 3
+  damage: 1
+  givenExp: 1
+  point: 100
 --- !u!114 &-2369381043611377797
 MonoBehaviour:
   m_ObjectHideFlags: 0

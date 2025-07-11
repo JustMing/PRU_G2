@@ -105,10 +105,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48cdbb2a49a9d14fada998f3d6b206d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 0
   maxLives: 5
   damage: 1
   givenExp: 1
+  givenPoint: 300
   bulletPosition: {fileID: 7149455574602606240}
   bulletPool: {fileID: 0}
   sprites:
