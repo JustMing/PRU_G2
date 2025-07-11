@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Obstacle
+  - Bullet
+  - Enemy
+  - Critter
   layers:
   - Default
   - TransparentFX
@@ -14,10 +18,10 @@ TagManager:
   - Player
   - LevelBoundaries
   - Obstacle
-  - 
-  - 
-  - 
-  - 
+  - Critter
+  - Bullet
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 
@@ -44,14 +48,17 @@ TagManager:
   - name: Background
     uniqueID: 3242544281
     locked: 0
-  - name: Player
-    uniqueID: 1078868589
-    locked: 0
   - name: Objects
     uniqueID: 3588327151
     locked: 0
-  - name: Bullet
-    uniqueID: 2487579971
+  - name: Enemy
+    uniqueID: 764125745
+    locked: 0
+  - name: Player
+    uniqueID: 1078868589
+    locked: 0
+  - name: UI
+    uniqueID: 449531669
     locked: 0
   m_RenderingLayers:
   - Default
