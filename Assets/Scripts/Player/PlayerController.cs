@@ -126,7 +126,16 @@ public class PlayerController : MonoBehaviour
         {
             currentLevel++;
         }
+        if (Random.Range(0, 10) % 2 == 0)
+        {
+            health += 1;
+        }
         UIController.Instance.UpdateExpSlider(experience, playerLevels[currentLevel]);
         ShipWeapon.Instance.LevelUp();
+    }
+
+    public void GetScorePoint(int score)
+    {
+        UIController.Instance.AddPoint(score);
     }
 }

@@ -8,14 +8,15 @@ public class Asteroid : MonoBehaviour
     private Rigidbody2D rb;
     private FlashWhite flashWhite;
 
-    private ObjectPooler destroyEffectPool;
-    private int maxLives =3;
+    [SerializeField] private ObjectPooler destroyEffectPool;
+    [SerializeField] private int maxLives =3;
     private int lives;
-    private int damage = 1;
-    private int givenExp = 1;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private int givenExp = 1;
+    [SerializeField] private int point = 100;
 
-    float pushX;
-    float pushY;
+    private float pushX;
+    private float pushY;
 
     private void OnEnable()
     {
@@ -70,6 +71,7 @@ public class Asteroid : MonoBehaviour
             flashWhite.Reset();
             gameObject.SetActive(false);
             if(giveExp) PlayerController.Instance.GetExperience(givenExp);
+            PlayerController.Instance.GetScorePoint(point);
         }
     }
 

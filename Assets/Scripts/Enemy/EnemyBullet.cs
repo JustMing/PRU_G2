@@ -10,6 +10,7 @@ public class EnemyBullet : MonoBehaviour
      void OnEnable()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
         Vector3 direction = player.transform.position - transform.position;
         if (rb) rb.linearVelocity = new Vector2(direction.x * Time.deltaTime, 
                                     direction.y * Time.deltaTime).normalized * force;
@@ -20,9 +21,12 @@ public class EnemyBullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 direction = player.transform.position - transform.position;
-        if (rb) rb.linearVelocity = new Vector2 (direction.x * Time.deltaTime, 
-                            direction.y * Time.deltaTime).normalized * force;
+        if (player != null)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            if (rb) rb.linearVelocity = new Vector2(direction.x * Time.deltaTime,
+                                direction.y * Time.deltaTime).normalized * force;
+        }
     }
 
     // Update is called once per frame
