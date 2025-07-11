@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public static UIController Instance;
+    public GameObject pausePanel;
 
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TMP_Text healthText;

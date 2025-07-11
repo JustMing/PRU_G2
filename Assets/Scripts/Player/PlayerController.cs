@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     //public Vector2 _velocity = new (0, 0);
 
-    [SerializeField] private float health;
+    [SerializeField] public float health;
     [SerializeField] private float maxHealth;
     private ObjectPooler destroyEffectPool;
 
@@ -84,11 +85,16 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             Asteroid asteroid = collision.gameObject.GetComponent<Asteroid>();
-            if (asteroid) asteroid.TakeDamage(1,false);
-        }else if (collision.gameObject.CompareTag("Enemy"))
+            if (asteroid) asteroid.TakeDamage(1, false);
+        }
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy) enemy.TakeDamage(1);
+        }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            TakeDamage(2);
         }
     }
 
@@ -108,7 +114,9 @@ public class PlayerController : MonoBehaviour
             destroyEffect.transform.rotation = transform.rotation;
             destroyEffect.SetActive(true);
             AudioManager.Instance.PlaySound(AudioManager.Instance.shipExplosion);
+            AudioManager.Instance.bg.Stop();
             Time.timeScale = 0;
+            SceneManager.LoadScene("LoseScene");
         }
     }
 

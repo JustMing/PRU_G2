@@ -90,7 +90,8 @@ public class Critter : MonoBehaviour
             burnEffect.transform.position = transform.position;
             burnEffect.transform.rotation = transform.rotation;
             burnEffect.SetActive(true);
-
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player) player.TakeDamage(1);
             gameObject.SetActive(false);
         }
     }

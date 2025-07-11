@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxLives: 5
-  damage: 1
+  damage: 2
   givenExp: 1
   givenPoint: 300
   bulletPosition: {fileID: 7149455574602606240}

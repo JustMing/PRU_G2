@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource explosionDestroy;
     public AudioSource hitObstacle;
     public AudioSource shoot;
+    public AudioSource bg;
 
     void Awake()
     {
@@ -21,6 +22,11 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    void Start()
+    {
+        bg.Play();
     }
 
     public void PlaySound(AudioSource sound)
