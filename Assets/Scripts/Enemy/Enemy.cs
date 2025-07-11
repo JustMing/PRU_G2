@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     protected SpriteRenderer spriteRenderer;
     private FlashWhite flashWhite;
     protected ObjectPooler destroyEffectPool;
+    private GameObject player;
 
     private int lives;
     [SerializeField] private int maxLives;
@@ -62,16 +63,18 @@ public class Enemy : MonoBehaviour
 
         if(lives > 0)
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.hitObstacle);
             flashWhite.Flash();
         }
         else
         {
+            AudioManager.Instance.PlaySound(AudioManager.Instance.explosionDestroy);
             flashWhite.Reset();
             GameObject destroyEffect = destroyEffectPool.GetPooledObject();
             destroyEffect.transform.position = transform.position;
             destroyEffect.transform.rotation = transform.rotation;
             destroyEffect.SetActive(true);
-
+           
             PlayerController.Instance.GetExperience(givenExp);
             PlayerController.Instance.GetScorePoint(givenPoint);
 
@@ -81,9 +84,13 @@ public class Enemy : MonoBehaviour
 
     public void EnemyShoot()
     {
-        GameObject bullet = bulletPool.GetPooledObject();
-        float xPos = bulletPosition.transform.position.x;
-        bullet.transform.position = new Vector2(xPos, bulletPosition.transform.position.y);
-        bullet.SetActive(true);
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            GameObject bullet = bulletPool.GetPooledObject();
+            float xPos = bulletPosition.transform.position.x;
+            bullet.transform.position = new Vector2(xPos, bulletPosition.transform.position.y);
+            bullet.SetActive(true);
+        }
     }
 }

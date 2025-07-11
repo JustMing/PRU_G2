@@ -96,6 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         health -= damage;
         UIController.Instance.UpdateHealthSlider(health, maxHealth);
+        AudioManager.Instance.PlaySound(AudioManager.Instance.hit);
         flashWhite.Flash();
         if(health <= 0)
         {
@@ -106,6 +107,8 @@ public class PlayerController : MonoBehaviour
             destroyEffect.transform.position = transform.position;
             destroyEffect.transform.rotation = transform.rotation;
             destroyEffect.SetActive(true);
+            AudioManager.Instance.PlaySound(AudioManager.Instance.shipExplosion);
+            Time.timeScale = 0;
         }
     }
 

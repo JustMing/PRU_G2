@@ -26,6 +26,7 @@ public class ShipWeapon : Weapon
         //Instantiate(prefab, bulletPosition.transform.position, bulletPosition.transform.rotation);
         //GameObject bullet = bulletPool.GetPooledObject();
         //bullet.transform.position = bulletPosition.transform.position;
+        AudioManager.Instance.PlayModifiedSound(AudioManager.Instance.shoot);
         for (int i = 0; i < stats[weaponLevel].amount; i++)
         {
             GameObject bullet = bulletPool.GetPooledObject();
