@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -15,10 +16,12 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float remainingTime;
 
+    [SerializeField] private GameObject wonGame;
+
     [SerializeField] private TextMeshProUGUI inGameScoreText;
     private int score;
     [SerializeField] private TextMeshProUGUI HighScoreText;
-    private int highScore;
+    public int highScore;
 
 
     private void Awake()
@@ -43,6 +46,16 @@ public class UIController : MonoBehaviour
         {
             remainingTime = 0;
             timerText.color = Color.red;
+            Time.timeScale = 0f;
+            if(SceneManager.GetActiveScene().name == "Boss")
+            {
+                SceneManager.LoadScene("LoseScene");
+            } else
+            {
+                AudioManager.Instance.bg.Stop();
+                AudioManager.Instance.PlaySound(AudioManager.Instance.win);
+                wonGame.SetActive(true);
+            }
         }
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
@@ -68,5 +81,6 @@ public class UIController : MonoBehaviour
     {
         score += point;
         inGameScoreText.text = string.Format("{0:0000000}", score);
+        highScore = inGameScoreText.text.Length > 0 ? int.Parse(inGameScoreText.text) : 0;
     }
 }

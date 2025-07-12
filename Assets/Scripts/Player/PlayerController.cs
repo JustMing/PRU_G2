@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     private FlashWhite flashWhite;
 
     [SerializeField] private float moveSpeed;
-    //public Vector2 _velocity = new (0, 0);
 
     [SerializeField] public float health;
     [SerializeField] private float maxHealth;

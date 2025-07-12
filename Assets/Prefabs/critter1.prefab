@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 722863708892584806}
   - component: {fileID: 6019614819994789920}
   - component: {fileID: 1097697686484907842}
+  - component: {fileID: 4243253111491518291}
   m_Layer: 9
   m_Name: critter1
   m_TagString: Enemy
@@ -103,6 +104,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2de01db768241284e82e3e877dd95116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxLives: 1
+  damage: 1
+  givenExp: 1
+  givenPoint: 100
   sprites:
   - {fileID: 3874517981774512945, guid: 5ec50dd2d6a48004bb13669428f142e9, type: 3}
   - {fileID: -1288456409569948990, guid: 5ec50dd2d6a48004bb13669428f142e9, type: 3}
@@ -184,3 +189,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4243253111491518291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4576492691848083182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c6b039ea3e602449a20be2e935c433, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -564,7 +564,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6338992054755137692, guid: 0d98d7f1616a8c041aedb0833856373c, type: 3}
       propertyPath: m_text
-      value: You Lost
+      value: You WOn
       objectReference: {fileID: 0}
     - target: {fileID: 7225661698645987430, guid: 0d98d7f1616a8c041aedb0833856373c, type: 3}
       propertyPath: m_Name

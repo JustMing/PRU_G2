@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
     public AudioSource shoot;
     public AudioSource bg;
 
+    public AudioSource win;
+
     void Awake()
     {
         if (Instance != null)
