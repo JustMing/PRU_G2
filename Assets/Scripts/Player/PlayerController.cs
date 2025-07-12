@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         flashWhite = GetComponent<FlashWhite>();
