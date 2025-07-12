@@ -867,6 +867,7 @@ MonoBehaviour:
   expText: {fileID: 159754923}
   timerText: {fileID: 1932522636}
   remainingTime: 120
+  wonGame: {fileID: 0}
   inGameScoreText: {fileID: 345830641}
   HighScoreText: {fileID: 345830641}
   highScore: 0
@@ -6129,6 +6130,7 @@ MonoBehaviour:
   hitObstacle: {fileID: 1750837782}
   shoot: {fileID: 439554777}
   bg: {fileID: 719112171}
+  win: {fileID: 0}
 --- !u!1 &2077780415
 GameObject:
   m_ObjectHideFlags: 0
