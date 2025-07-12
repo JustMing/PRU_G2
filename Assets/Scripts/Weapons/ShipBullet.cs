@@ -21,10 +21,6 @@ public class ShipBullet : MonoBehaviour
 
      void OnCollisionEnter2D(Collision2D collision)
     {
-        //if (collision.gameObject.CompareTag("Obstacle") || collision.gameObject.CompareTag("Enemy"))
-        //{
-        //    gameObject.SetActive(false);
-        //}
         if(collision.gameObject.CompareTag("Obstacle")){
             Asteroid asteroid = collision.gameObject.GetComponent<Asteroid>();
             if (asteroid) asteroid.TakeDamage(weapon.stats[weapon.weaponLevel].damage,true);
@@ -38,6 +34,12 @@ public class ShipBullet : MonoBehaviour
         {
             Enemy enemy = collision.gameObject.GetComponent<Enemy>();
             if (enemy) enemy.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
+            gameObject.SetActive(false);
+        }
+        else if (collision.gameObject.CompareTag("Boss"))
+        {
+            Boss boss = collision.gameObject.GetComponent<Boss>();
+            if(boss) boss.TakeDamage(weapon.stats[weapon.weaponLevel].damage);
             gameObject.SetActive(false);
         }
     }

@@ -1,44 +1,30 @@
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private AudioMixer audioMixer;
-    [SerializeField] private GameObject pauseMenuPrefab;
-    private GameObject pauseMenuInstance;
-    public static bool IsPause = false;
     public static GameManager Instance;
     public float worldSpeed;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Instance = this;
         }
     }
     void Update()
     {
-        TogglePause();
-    }
-    private void TogglePause()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != ("MainMenu"))
+        if (Input.GetKeyDown(KeyCode.Escape) && PlayerController.Instance.health > 0)
         {
-            if (IsPause)
-            {
-                GameResume();
-            }
-            else
-            {
-                GamePause();
-            }
+            Pause();
         }
     }
 
@@ -50,7 +36,7 @@ public class GameManager : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        audioMixer.SetFloat("volume", volume);
+        audioMixer.SetFloat("Volume", volume);
         Debug.Log("Volume set to: " + volume);
     }
 
@@ -59,31 +45,38 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
-    private void GamePause()
-    {
-        Time.timeScale = 0f;
-        IsPause = true;
-        Debug.Log("Game Paused");
-        if (pauseMenuInstance == null)
-        {
-            pauseMenuInstance = Instantiate(pauseMenuPrefab);
-        }
-        pauseMenuInstance.SetActive(true);
-    }
-
-    private void GameResume()
-    {
-        Time.timeScale = 1f;
-        IsPause = false;
-        Debug.Log("Game Resumed");
-        if (pauseMenuInstance != null)
-        {
-            pauseMenuInstance.SetActive(false);
-        }
-    }
-
     public void SetWorldSpeed(float speed)
     {
         worldSpeed = speed;
+    }
+
+    public void Pause()
+    {
+        if(UIController.Instance.pausePanel.activeSelf == false)
+        {
+            UIController.Instance.pausePanel.SetActive(true);
+            Time.timeScale = 0f;
+        } else
+        {
+            UIController.Instance.pausePanel.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Detail(GameObject text)
+    {
+        if (text.activeSelf)
+        {
+            text.SetActive(false);
+        }
+        else
+        {
+            text.SetActive(true);
+        }
     }
 }

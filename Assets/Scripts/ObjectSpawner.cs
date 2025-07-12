@@ -59,7 +59,6 @@ public class ObjectSpawner : MonoBehaviour
         spawnedObject.transform.position = RandomSpawnPoint();
         spawnedObject.transform.rotation = transform.rotation;
         spawnedObject.SetActive(true);
-        //Instantiate(waves[waveNumber].prefab,RandomSpawnPoint(),transform.rotation,transform);// create a copy of object what, where and rotation
         waves[waveNumber].spawnedObjectCount++;
     }
 
@@ -73,13 +72,4 @@ public class ObjectSpawner : MonoBehaviour
 
         return spawnPoint;
     }
-
-    //private void IncreaseSpawnRate()
-    //{
-    //    if(waves[waveNumber].spawnInterval > 0.5f)
-    //    {
-    //        waves[waveNumber].spawnInterval -= 0.5f;
-    //    }
-    //    if()
-    //}
 }
