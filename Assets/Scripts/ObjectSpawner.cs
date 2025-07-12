@@ -10,6 +10,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private int waveNumber;
     [SerializeField] private List<Wave> waves;
     [SerializeField] private float timeCounter;
+    [SerializeField] private float timeCheckpoint; // a checkpoint of time to start reduce time spawn interval
+
 
     [System.Serializable]
     public class Wave
@@ -40,7 +42,7 @@ public class ObjectSpawner : MonoBehaviour
         }
 
         timeCounter += Time.deltaTime;
-        if (timeCounter >= 10f)
+        if (timeCounter >= timeCheckpoint)
         {
             timeCounter = 0f;
             foreach (Wave wave in waves)

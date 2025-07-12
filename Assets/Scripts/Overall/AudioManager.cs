@@ -39,7 +39,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayModifiedSound(AudioSource sound)
     {
-        sound.pitch = Random.Range(0.5f, 0.8f);
+        sound.pitch = Random.Range(0.4f, 0.7f);
         sound.Stop();
         sound.Play();
     }

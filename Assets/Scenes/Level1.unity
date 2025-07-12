@@ -436,33 +436,33 @@ MonoBehaviour:
   maxPos: {fileID: 1465752661}
   waveNumber: 0
   waves:
-  - pool: {fileID: 369501578}
+  - pool: {fileID: 988269276}
     spawnTimer: 0
     spawnInterval: 1
-    objectsPerwave: 5
+    objectsPerwave: 2
     spawnedObjectCount: 0
-  - pool: {fileID: 663658262}
+  - pool: {fileID: 369501578}
+    spawnTimer: 0
+    spawnInterval: 1.5
+    objectsPerwave: 6
+    spawnedObjectCount: 0
+  - pool: {fileID: 988269276}
+    spawnTimer: 0
+    spawnInterval: 3
+    objectsPerwave: 1
+    spawnedObjectCount: 0
+  - pool: {fileID: 369501578}
     spawnTimer: 0
     spawnInterval: 2
-    objectsPerwave: 1
+    objectsPerwave: 4
     spawnedObjectCount: 0
   - pool: {fileID: 988269276}
     spawnTimer: 0
-    spawnInterval: 3
+    spawnInterval: 4
     objectsPerwave: 2
-    spawnedObjectCount: 0
-  - pool: {fileID: 663658262}
-    spawnTimer: 0
-    spawnInterval: 3
-    objectsPerwave: 2
-    spawnedObjectCount: 0
-  - pool: {fileID: 988269276}
-    spawnTimer: 0
-    spawnInterval: 5
-    objectsPerwave: 1
     spawnedObjectCount: 0
   timeCounter: 0
-  timeCheckpoint: 10
+  timeCheckpoint: 8
 --- !u!4 &134497363
 Transform:
   m_ObjectHideFlags: 0
@@ -868,7 +868,7 @@ MonoBehaviour:
   expSlider: {fileID: 389830933}
   expText: {fileID: 159754923}
   timerText: {fileID: 1791664900}
-  remainingTime: 120
+  remainingTime: 60
   wonGame: {fileID: 1659215954}
   inGameScoreText: {fileID: 345830641}
   HighScoreText: {fileID: 345830641}
@@ -5656,7 +5656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3809564058864513073, guid: c80f1d9bce12b4c478c00bc384979e66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Boss
+      value: Level2
       objectReference: {fileID: 0}
     - target: {fileID: 3809564058864513073, guid: c80f1d9bce12b4c478c00bc384979e66, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
